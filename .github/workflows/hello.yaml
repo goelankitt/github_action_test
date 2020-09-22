@@ -1,0 +1,19 @@
+name: Deploy Something
+
+on:
+  workflow_dispatch:
+    inputs:
+      magic_number:
+        description: 'Some Input'
+        required: true
+
+jobs:
+  hello_world:
+    name: 'Say hello'
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout_master
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: run hello script
