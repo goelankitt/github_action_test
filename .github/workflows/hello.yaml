@@ -24,8 +24,12 @@ jobs:
         with:
           ref: master
       - name: run hello script
+        shell: bash
         run: |
+          echo "INPUT CASE"
           ./hello.sh ${{ github.event.inputs.magic_number }}
+          echo "SECRET CASE"
+          ./hello.sh ${{ secrets.SOME_SECRET }}
           python3 hello.py
           grafana-dashboard --help
 
