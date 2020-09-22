@@ -17,5 +17,7 @@ jobs:
         with:
           ref: master
       - name: run hello script
-        run: ./hello.sh $INPUT_MAGIC_NUMBER
+        run: |
+          echo "LOLOLOLOLOL"
+          ./hello.sh ${{ github.event.inputs.magic_number }}
 
