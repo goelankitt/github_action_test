@@ -26,6 +26,6 @@ jobs:
       - name: run hello script
         run: |
           ./hello.sh ${{ github.event.inputs.magic_number }}
-          python3 hello.sh
+          python3 hello.py
           grafana-dashboard --help
 
