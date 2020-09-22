@@ -2,10 +2,6 @@ name: Deploy Something
 
 on:
   workflow_dispatch:
-    inputs:
-      magic_number:
-        description: 'Some Input'
-        required: true
 
 jobs:
   hello_world:
@@ -26,8 +22,6 @@ jobs:
       - name: run hello script
         shell: bash
         run: |
-          echo "INPUT CASE"
-          ./hello.sh ${{ github.event.inputs.magic_number }}
           echo "SECRET CASE"
           ./hello.sh ${{ secrets.SOME_SECRET }}
           python3 hello.py
