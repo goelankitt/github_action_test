@@ -12,12 +12,20 @@ jobs:
     name: 'Say hello'
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install grafyaml
+        run: |
+          pip3 install git+https://github.com/deliveryhero/grafyaml.git@fixes
       - name: checkout_master
         uses: actions/checkout@v2
         with:
           ref: master
       - name: run hello script
         run: |
-          echo "LOLOLOLOLOL"
           ./hello.sh ${{ github.event.inputs.magic_number }}
+          python3 hello.sh
+          grafana-dashboard --help
 
