@@ -17,4 +17,5 @@ jobs:
         with:
           ref: master
       - name: run hello script
-        run: ./hello.sh
+        run: ./hello.sh ${{magic_number}}
+
