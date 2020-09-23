@@ -1,0 +1,31 @@
+name: Merge To Master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  hello_world:
+    name: 'Say hello'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install grafyaml
+        run: |
+          pip3 install git+https://github.com/deliveryhero/grafyaml.git@fixes
+      - name: checkout_master
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: run hello script
+        shell: bash
+        run: |
+          echo "SECRET CASE"
+          ./hello.sh ${{ secrets.SOME_SECRET }}
+          python3 hello.py
+          grafana-dashboard --help
+
