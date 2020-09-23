@@ -17,8 +17,6 @@ jobs:
           pip3 install git+https://github.com/deliveryhero/grafyaml.git@fixes
       - name: checkout_master
         uses: actions/checkout@v2
-        with:
-          ref: master
       - name: run hello script
         shell: bash
         run: |
